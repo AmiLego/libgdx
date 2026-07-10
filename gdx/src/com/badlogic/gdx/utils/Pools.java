@@ -21,12 +21,6 @@ import com.badlogic.gdx.Net.HttpRequest;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout.GlyphRun;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage.TouchFocus;
-import com.badlogic.gdx.scenes.scene2d.actions.*;
-import com.badlogic.gdx.scenes.scene2d.ui.Table.DebugRect;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.FocusListener.FocusEvent;
 import com.badlogic.gdx.utils.DefaultPool.PoolSupplier;
 
 /** Stores a map of {@link Pool}s by type for convenient static access.
@@ -40,44 +34,10 @@ public class Pools {
 
 	static {
 		set(Array::new);
-		set(ChangeEvent::new);
-		set(DebugRect::new);
-		set(FocusEvent::new);
 		set(GlyphRun::new);
 		set(GlyphLayout::new);
 		set(HttpRequest::new);
-		set(InputEvent::new);
 		set(Rectangle::new);
-		set(TouchFocus::new);
-
-		// Actions
-		set(AddAction::new);
-		set(AddListenerAction::new);
-		set(AfterAction::new);
-		set(AlphaAction::new);
-		set(ColorAction::new);
-		set(DelayAction::new);
-		set(FloatAction::new);
-		set(IntAction::new);
-		set(LayoutAction::new);
-		set(MoveByAction::new);
-		set(MoveToAction::new);
-		set(ParallelAction::new);
-		set(RemoveAction::new);
-		set(RemoveActorAction::new);
-		set(RemoveListenerAction::new);
-		set(RepeatAction::new);
-		set(RotateByAction::new);
-		set(RotateToAction::new);
-		set(RunnableAction::new);
-		set(ScaleByAction::new);
-		set(ScaleToAction::new);
-		set(SequenceAction::new);
-		set(SizeByAction::new);
-		set(SizeToAction::new);
-		set(TimeScaleAction::new);
-		set(TouchableAction::new);
-		set(VisibleAction::new);
 	}
 
 	/** Returns a new or existing pool for the specified type, stored in a Class to {@link Pool} map. Note the max size is ignored
