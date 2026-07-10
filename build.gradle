@@ -132,7 +132,7 @@ configure(subprojects - project(":tests:gdx-tests-android") - project(":backends
 	}
 }
 
-configure(subprojects - project(":backends") - project(":extensions") - project(":tests") - project(":extensions:gdx-box2d-parent")) {
+configure(subprojects - project(":backends") - project(":extensions") - project(":tests")) {
 	apply plugin: "idea"
 	apply plugin: "eclipse"
 

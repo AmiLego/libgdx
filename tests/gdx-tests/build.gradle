@@ -15,6 +15,5 @@
  ******************************************************************************/
 
 dependencies {
-	api project(":extensions:gdx-box2d-parent:gdx-box2d")
 	api project(":extensions:gdx-freetype")
 }

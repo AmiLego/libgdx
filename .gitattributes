@@ -1,2 +1,8 @@
 /CHANGES merge=union
 /CONTRIBUTORS merge=union
+
+# Set default behavior to normalize all files to LF on check-in
+* text=auto
+
+# Force LF on checkout for all text files
+* text eol=lf
