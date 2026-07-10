@@ -47,7 +47,6 @@ public class AndroidDaydream extends DreamService implements AndroidApplicationB
 	protected AndroidInput input;
 	protected AndroidAudio audio;
 	protected AndroidFiles files;
-	protected AndroidNet net;
 	protected AndroidClipboard clipboard;
 	protected ApplicationListener listener;
 	protected Handler handler;
@@ -109,7 +108,6 @@ public class AndroidDaydream extends DreamService implements AndroidApplicationB
 		input = createInput(this, this, graphics.view, config);
 		audio = createAudio(this, config);
 		files = createFiles();
-		net = new AndroidNet(this, config);
 		this.listener = listener;
 		this.handler = new Handler();
 		this.clipboard = new AndroidClipboard(this);
@@ -139,7 +137,6 @@ public class AndroidDaydream extends DreamService implements AndroidApplicationB
 		Gdx.audio = this.getAudio();
 		Gdx.files = this.getFiles();
 		Gdx.graphics = this.getGraphics();
-		Gdx.net = this.getNet();
 
 		if (!isForView) {
 			setFullscreen(true);
@@ -189,7 +186,6 @@ public class AndroidDaydream extends DreamService implements AndroidApplicationB
 		Gdx.audio = this.getAudio();
 		Gdx.files = this.getFiles();
 		Gdx.graphics = this.getGraphics();
-		Gdx.net = this.getNet();
 
 		input.onDreamingStarted();
 
@@ -232,11 +228,6 @@ public class AndroidDaydream extends DreamService implements AndroidApplicationB
 	@Override
 	public AndroidInput getInput () {
 		return input;
-	}
-
-	@Override
-	public Net getNet () {
-		return net;
 	}
 
 	@Override

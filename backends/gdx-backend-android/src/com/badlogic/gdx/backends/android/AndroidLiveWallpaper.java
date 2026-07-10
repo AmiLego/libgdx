@@ -42,7 +42,6 @@ public class AndroidLiveWallpaper implements AndroidApplicationBase {
 	protected AndroidInput input;
 	protected AndroidAudio audio;
 	protected AndroidFiles files;
-	protected AndroidNet net;
 	protected AndroidClipboard clipboard;
 	protected ApplicationListener listener;
 	protected boolean firstResume = true;
@@ -73,7 +72,6 @@ public class AndroidLiveWallpaper implements AndroidApplicationBase {
 
 		audio = createAudio(this.getService(), config);
 		files = createFiles();
-		net = new AndroidNet(this, config);
 		this.listener = listener;
 		clipboard = new AndroidClipboard(this.getService());
 
@@ -85,7 +83,6 @@ public class AndroidLiveWallpaper implements AndroidApplicationBase {
 		Gdx.audio = audio;
 		Gdx.files = files;
 		Gdx.graphics = graphics;
-		Gdx.net = net;
 	}
 
 	public void onPause () {
@@ -125,7 +122,6 @@ public class AndroidLiveWallpaper implements AndroidApplicationBase {
 		Gdx.audio = audio;
 		Gdx.files = files;
 		Gdx.graphics = graphics;
-		Gdx.net = net;
 
 		input.onResume();
 
@@ -203,11 +199,6 @@ public class AndroidLiveWallpaper implements AndroidApplicationBase {
 	@Override
 	public AndroidInput getInput () {
 		return input;
-	}
-
-	@Override
-	public Net getNet () {
-		return net;
 	}
 
 	@Override
