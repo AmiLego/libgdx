@@ -22,9 +22,6 @@ ext {
 }
 
 versions.java = project.hasProperty("javaVersion") ? Integer.parseInt(project.getProperty("javaVersion")) : 8
-versions.robovm = "2.3.24"
-versions.gwt = "2.11.0"
-versions.gwtPlugin = "1.1.29"
 versions.jsinteropAnnotations = "2.0.2"
 versions.gretty = "3.1.0"
 versions.jglwf = "1.1"
@@ -122,27 +119,12 @@ libraries.lwjgl3GLES = [
         "org.lwjgl:lwjgl-egl:${versions.lwjgl3}",
 ]
 
-libraries.robovm = [
-        "com.mobidevelop.robovm:robovm-rt:${versions.robovm}",
-        "com.mobidevelop.robovm:robovm-objc:${versions.robovm}",
-        "com.mobidevelop.robovm:robovm-cocoatouch:${versions.robovm}"
-]
-
 libraries.android = [
         "androidx.core:core:${versions.androidxCore}",
 ]
 
 libraries.compileOnly.android = [
         "androidx.fragment:fragment:${versions.androidxFragment}"
-]
-
-libraries.gwt = [
-        "org.gwtproject:gwt-user:${versions.gwt}",
-        "com.google.jsinterop:jsinterop-annotations:${versions.jsinteropAnnotations}:sources"
-]
-
-libraries.compileOnly.gwt = [
-        "org.gwtproject:gwt-dev:${versions.gwt}"
 ]
 
 libraries.junit = [

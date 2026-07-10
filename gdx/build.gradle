@@ -69,12 +69,4 @@ jnigen {
 	}
 	add(MacOsX, x64)
 	add(MacOsX, x64, ARM)
-	add(IOS) {
-		headerDirs = ["iosgl"]
-		cppExcludes = []
-		linkerFlags += " -undefined dynamic_lookup "
-	}
-	robovm {
-		extraXCFramework("libs/ObjectAL.xcframework")
-	}
 }

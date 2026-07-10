@@ -68,9 +68,6 @@ configure([
 									artifact "jnigenJarNativesAndroid${id}" { }
 							}
 
-							if(project.tasks.findByName('jnigenJarNativesIOS'))
-								artifact jnigenJarNativesIOS { }
-
 							pom {
 								name = POM_NAME + " Native Libraries"
 								if(!POM_DESCRIPTION.isEmpty())
