@@ -2,7 +2,6 @@ configure([
 	project(":gdx"),
 	project(":backends:gdx-backend-android"),
 	project(":backends:gdx-backend-headless"),
-	project(":backends:gdx-backend-lwjgl"),
 	project(":backends:gdx-backend-lwjgl3"),
 	project(":backends:gdx-backend-robovm"),
 	project(":backends:gdx-backend-robovm-metalangle"),

@@ -15,7 +15,7 @@
  ******************************************************************************/
 
 dependencies {
-	api project(":backends:gdx-backend-lwjgl")
+	api project(":backends:gdx-backend-lwjgl3")
 	api project(":extensions:gdx-freetype")
 	api project(":backends:gdx-backend-headless")
 	api testnatives.desktop
