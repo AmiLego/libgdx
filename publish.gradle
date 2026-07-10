@@ -3,8 +3,6 @@ configure([
 	project(":backends:gdx-backend-android"),
 	project(":backends:gdx-backend-headless"),
 	project(":backends:gdx-backend-lwjgl3"),
-	project(":backends:gdx-backend-robovm"),
-	project(":backends:gdx-backend-robovm-metalangle"),
 	project(":extensions:gdx-freetype"),
 	project(":extensions:gdx-lwjgl3-angle"),
 	project(":extensions:gdx-tools")
