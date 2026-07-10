@@ -48,7 +48,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.LifecycleListener;
-import com.badlogic.gdx.Net;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.backends.lwjgl3.audio.mock.MockAudio;
 import com.badlogic.gdx.math.GridPoint2;
@@ -64,7 +63,6 @@ public class Lwjgl3Application implements Lwjgl3ApplicationBase {
 	private volatile Lwjgl3Window currentWindow;
 	private Lwjgl3Audio audio;
 	private final Files files;
-	private final Net net;
 	private final ObjectMap<String, Preferences> preferences = new ObjectMap<String, Preferences>();
 	private final Lwjgl3Clipboard clipboard;
 	private int logLevel = LOG_INFO;
@@ -141,7 +139,6 @@ public class Lwjgl3Application implements Lwjgl3ApplicationBase {
 		}
 		Gdx.audio = audio;
 		this.files = Gdx.files = createFiles();
-		this.net = Gdx.net = new Lwjgl3Net(config);
 		this.clipboard = new Lwjgl3Clipboard();
 
 		this.sync = new Sync();
@@ -283,11 +280,6 @@ public class Lwjgl3Application implements Lwjgl3ApplicationBase {
 	@Override
 	public Files getFiles () {
 		return files;
-	}
-
-	@Override
-	public Net getNet () {
-		return net;
 	}
 
 	@Override

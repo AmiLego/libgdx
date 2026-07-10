@@ -48,7 +48,6 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 	protected AndroidInput input;
 	protected AndroidAudio audio;
 	protected AndroidFiles files;
-	protected AndroidNet net;
 	protected AndroidClipboard clipboard;
 	protected ApplicationListener listener;
 	public Handler handler;
@@ -123,7 +122,6 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 		input = createInput(this, this, graphics.view, config);
 		audio = createAudio(this, config);
 		files = createFiles();
-		net = new AndroidNet(this, config);
 		this.listener = listener;
 		this.handler = new Handler();
 		this.useImmersiveMode = config.useImmersiveMode;
@@ -154,7 +152,6 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 		Gdx.audio = this.getAudio();
 		Gdx.files = this.getFiles();
 		Gdx.graphics = this.getGraphics();
-		Gdx.net = this.getNet();
 
 		if (!isForView) {
 			try {
@@ -276,7 +273,6 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 		Gdx.audio = this.getAudio();
 		Gdx.files = this.getFiles();
 		Gdx.graphics = this.getGraphics();
-		Gdx.net = this.getNet();
 
 		input.onResume();
 
@@ -333,11 +329,6 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 	@Override
 	public Graphics getGraphics () {
 		return graphics;
-	}
-
-	@Override
-	public Net getNet () {
-		return net;
 	}
 
 	@Override

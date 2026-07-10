@@ -17,7 +17,6 @@
 package com.badlogic.gdx.utils;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Net.HttpRequest;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout.GlyphRun;
 import com.badlogic.gdx.math.Rectangle;
@@ -36,7 +35,6 @@ public class Pools {
 		set(Array::new);
 		set(GlyphRun::new);
 		set(GlyphLayout::new);
-		set(HttpRequest::new);
 		set(Rectangle::new);
 	}
 

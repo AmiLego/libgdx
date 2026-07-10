@@ -25,7 +25,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.LifecycleListener;
-import com.badlogic.gdx.Net;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.backends.headless.mock.audio.MockAudio;
 import com.badlogic.gdx.backends.headless.mock.graphics.MockGraphics;
@@ -42,7 +41,6 @@ public class HeadlessApplication implements Application {
 	protected final ApplicationListener listener;
 	protected Thread mainLoopThread;
 	protected final HeadlessFiles files;
-	protected final HeadlessNet net;
 	protected final MockAudio audio;
 	protected final MockInput input;
 	protected final MockGraphics graphics;
@@ -65,7 +63,6 @@ public class HeadlessApplication implements Application {
 		setApplicationLogger(new HeadlessApplicationLogger());
 		this.listener = listener;
 		this.files = new HeadlessFiles();
-		this.net = new HeadlessNet(config);
 		// the following elements are not applicable for headless applications
 		// they are only implemented as mock objects
 		this.graphics = new MockGraphics();
@@ -77,7 +74,6 @@ public class HeadlessApplication implements Application {
 
 		Gdx.app = this;
 		Gdx.files = files;
-		Gdx.net = net;
 		Gdx.audio = audio;
 		Gdx.graphics = graphics;
 		Gdx.input = input;
@@ -178,11 +174,6 @@ public class HeadlessApplication implements Application {
 	@Override
 	public Files getFiles () {
 		return files;
-	}
-
-	@Override
-	public Net getNet () {
-		return net;
 	}
 
 	@Override
