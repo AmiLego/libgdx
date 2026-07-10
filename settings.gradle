@@ -26,7 +26,6 @@ include ":backends:gdx-backend-robovm-metalangle"
 include(":extensions:gdx-box2d")
 project(":extensions:gdx-box2d").name = "gdx-box2d-parent"
 include ":extensions:gdx-box2d-parent:gdx-box2d"
-include ":extensions:gdx-bullet"
 include ":extensions:gdx-freetype"
 include ":extensions:gdx-tools"
 include ":extensions:gdx-lwjgl3-angle"
