@@ -5,7 +5,6 @@ configure([
 	project(":backends:gdx-backend-lwjgl3"),
 	project(":extensions:gdx-freetype"),
 	project(":extensions:gdx-lwjgl3-angle"),
-	project(":extensions:gdx-tools")
 ]) {
 	apply plugin: 'maven-publish'
 	apply plugin: 'signing'

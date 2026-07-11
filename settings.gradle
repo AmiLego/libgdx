@@ -21,7 +21,6 @@ include ":backends:gdx-backend-headless"
 include ":backends:gdx-backend-lwjgl3"
 
 include ":extensions:gdx-freetype"
-include ":extensions:gdx-tools"
 include ":extensions:gdx-lwjgl3-angle"
 
 rootProject.name = "libgdx"
