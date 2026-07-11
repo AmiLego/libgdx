@@ -148,7 +148,7 @@ jobs:
 
   pack-natives:
     runs-on: ubuntu-22.04
-    needs: [natives-macos, natives-linux, natives-windows, natives-ios, natives-android]
+    needs: [natives-macos, natives-linux, natives-windows, natives-android]
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -167,11 +167,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-
-      - name: Download natives-ios artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: natives-ios.zip
 
       - name: Download natives-macos artifact
         uses: actions/download-artifact@v4
@@ -195,7 +190,6 @@ jobs:
 
       - name: Unpack natives
         run: |
-          unzip -o natives-ios.zip
           unzip -o natives-macos.zip
           unzip -o natives-linux.zip
           unzip -o natives-windows.zip
