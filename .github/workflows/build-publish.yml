@@ -30,8 +30,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
-        with:
-          gradle-version: '8.14.3'
 
       - name: Build macOS natives
         run: |
@@ -85,8 +83,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
-        with:
-          gradle-version: '8.14.3'
 
       - name: Install cross-compilation toolchains
         run: |
@@ -123,8 +119,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
-        with:
-          gradle-version: '8.14.3'
 
       - name: Download NDK
         run: |
@@ -168,8 +162,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
-        with:
-          gradle-version: '8.14.3'
 
       - name: Download natives-macos artifact
         uses: actions/download-artifact@v4
@@ -239,8 +231,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
-        with:
-          gradle-version: '8.14.3'
 
       - name: Download natives artifact
         uses: actions/download-artifact@v4
