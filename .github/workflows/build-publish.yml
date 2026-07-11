@@ -15,40 +15,6 @@ on:
 
 jobs:
 
-  natives-ios:
-    runs-on: macos-15
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          submodules: 'recursive'
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      - name: Build iOS natives
-        run: |
-          /usr/bin/xcodebuild -version
-          ./gradlew jniGen jnigenBuildIOS
-          ./backends/gdx-backend-robovm/build-objectal.sh
-
-      - name: Pack artifacts
-        run: |
-          find .  -name "*.a" -o -name "*.dll" -o -name "*.dylib" -o -name "*.so" -o -name "*.xcframework"  | grep "libs" > native-files-list
-          zip -r natives-ios -@ < native-files-list
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: natives-ios.zip
-          path: natives-ios.zip
-
   natives-macos:
     runs-on: macos-15
     steps:
@@ -239,9 +205,7 @@ jobs:
         run: |
           ./gradlew jniGen
           ant -f gdx/jni/build.xml pack-natives
-          ant -f extensions/gdx-box2d/gdx-box2d/jni/build.xml pack-natives
           ant -f extensions/gdx-freetype/jni/build.xml pack-natives
-          ant -f extensions/gdx-bullet/jni/build.xml pack-natives
 
       - name: Pack natives
         run: |
@@ -311,35 +275,3 @@ jobs:
         run: |
           export GRADLE_OPTS="-Xmx8g"
           ./gradlew build publish -PRELEASE -Psigning.gnupg.keyId=${{ secrets.GPG_KEYID }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSPHRASE }} -Psigning.gnupg.keyName=${{ secrets.GPG_KEYID }}
-
-  build-and-upload-runnables:
-    runs-on: ubuntu-22.04
-    needs: pack-natives
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_EC2_METADATA_DISABLED: true
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          submodules: 'recursive'
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      - name: Build Runnables
-        run: |
-          ./gradlew clean fetchNatives
-          ./gradlew buildRunnables build
-
-      - name: Upload artifacts to S3
-        if: env.AWS_ACCESS_KEY_ID != null
-        run: |
-          aws s3 cp ./extensions/gdx-tools/build/libs/ s3://libgdx-nightlies/libgdx-runnables/ --recursive
