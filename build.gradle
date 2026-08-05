@@ -53,7 +53,7 @@ ext {
 }
 
 allprojects {
-	group = 'com.badlogicgames.gdx'
+	group = 'com.amilego.gdx'
 	version = project.getProperty('version') + (isReleaseBuild() ? "" : "-SNAPSHOT")
 
 	buildscript {
