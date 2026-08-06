@@ -2,7 +2,7 @@ name: Build and Publish
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ami ]
   workflow_dispatch:
     inputs:
       release:
@@ -246,7 +246,7 @@ jobs:
           ./gradlew fetchExternalNatives
 
       - name: Snapshot build deploy
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'AmiLego'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/ami' && github.repository_owner == 'AmiLego'
         run: |
           ./gradlew build publish
 
