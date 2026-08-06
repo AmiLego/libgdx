@@ -39,8 +39,8 @@ configure([
 							}
 							developers {
 								developer {
-									id = "libGDX Developers"
-									url = "https://github.com/libgdx/libgdx/graphs/contributors"
+									id = "libGDX and AmiLego Developers"
+									url = "https://github.com/AmiLego/libgdx/graphs/contributors"
 								}
 							}
 							scm {

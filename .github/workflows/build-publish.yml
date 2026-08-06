@@ -246,12 +246,12 @@ jobs:
           ./gradlew fetchExternalNatives
 
       - name: Snapshot build deploy
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'libgdx'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'AmiLego'
         run: |
           ./gradlew build publish
 
       - name: Import GPG key
-        if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'libgdx'
+        if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'AmiLego'
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@1c6a9e9d3594f2d743f1b1dd7669ab0dfdffa922
         with:
@@ -259,7 +259,7 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Release build deploy
-        if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'libgdx'
+        if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'AmiLego'
         run: |
           export GRADLE_OPTS="-Xmx8g"
           ./gradlew build publish -PRELEASE -Psigning.gnupg.keyId=${{ secrets.GPG_KEYID }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSPHRASE }} -Psigning.gnupg.keyName=${{ secrets.GPG_KEYID }}
