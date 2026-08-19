@@ -1,6 +1,83 @@
 ![libGDX Logo](libgdx_logo.svg#gh-light-mode-only)
 ![libGDX Logo](libgdx_logo_dark.svg#gh-dark-mode-only)
 
+[![GitHub Actions Build Status](https://img.shields.io/github/actions/workflow/status/amilego/libgdx/build-publish.yml?branch=master&label=GitHub%20Actions)](https://github.com/libgdx/libgdx/actions?query=workflow%3A%22Build+and+Publish%22)
+
+[![Latest Version](https://img.shields.io/maven-central/v/com.amilego.gdx/gdx?label=Version)](https://search.maven.org/artifact/com.amilego.gdx/gdx)
+[![Snapshots](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fcom%2Familego%2Fgdx%2Fgdx%2Fmaven-metadata.xml&label=Snapshots)](https://central.sonatype.com/repository/maven-snapshots/com/amilego/gdx/gdx/maven-metadata.xml)
+
+# libGDX (AmiLego fork)
+
+## Introduction
+
+This is a **fork** of [the original libGDX repository](https://github.com/libgdx/libgdx), maintaining by [the AmiLego organization](https://github.com/amilego).
+
+To use this fork library, you can just replace the group ID from `com.badlogicgames.gdx` to `com.amilego.gdx` in your Gradle build script or Maven file.
+
+## Changes We Made
+
+This fork is intended to provide a **minimal version** of libGDX, so some features are removed to reduce the size of the library.
+
+### 🚫 1. Removed Features
+
+| Removed Feature            | Affected Artifact                                         | Affected Package                            |
+| :------------------------- | :-------------------------------------------------------- | :------------------------------------------ |
+| LWJGL2 desktop backend     | `:gdx-backend-lwjgl`                                      | `.backends.lwjgl`                           |
+| GWT / HTML5 backend        | `:gdx-backends-gwt`                                       | `.gdx.backends.gwt`                         |
+| iOS backend                | `:gdx-backend-robovm`, `:gdx-backend-robovm-metalangle` | `.backends.ios`                             |
+| Box2D physics extension    | `:gdx-box2d`                                              | `.physics.box2d`                            |
+| Bullet physics extension   | `:gdx-bullet`                                             | `.physics.bullet`                           |
+| Developer tools            | `:gdx-tools`                                              | `.tools`                                    |
+| Scene2D UI toolkit         | `:gdx`                                                    | `.scenes.scene2d`                           |
+| Tiled map API              | `:gdx`                                                    | `.maps`                                     |
+| Networking API             | `:gdx`                                                    | `.net`                                      |
+| XML utilities              | `:gdx`                                                    | `.utils.XmlReader`, `.utils.XmlWriter`      |
+| Localization utilities     | `:gdx`                                                    | `.utils.I18NBundle`, `.utils.TextFormatter` |
+| Base64 utilities           | `:gdx`                                                    | `.utils.Base64Coder`                        |
+| LZMA compression utilities | `:gdx`                                                    | `.utils.compression`                        |
+| Test suite                 | /                                                         | `tests/*`                                   |
+
+<details>
+<summary>Some removals also affect the remaining APIs.</summary>
+
+- With the removal of Scene2D, `ScissorStack` is relocated from `com.badlogic.gdx.scenes.scene2d.utils` to `com.badlogic.gdx.graphics`, and `SkinLoader` (as well as the skin / i18n asset support in `AssetManager`) is removed.
+- With the removal of the networking API, the network-related methods of `Pixmap` are removed as well. `Gdx.net`, `Application#getNet()`, and the `Net` implementations of each backend are also removed.
+
+</details>
+
+### ⚙️ 2. Modified Features
+
+| Modified Feature          | Affected Artifact   | Details                                                       |
+| :------------------------ | :------------------ | :------------------------------------------------------------ |
+| ANGLE native packaging    | `:gdx-lwjgl3-angle` | Natives are repackaged into the LWJGL-style layout `<os>/<arch>/angle/`, and `ANGLELoader` is updated accordingly. See [libgdx/libgdx #7822](https://github.com/libgdx/libgdx/pull/7822). |
+
+### 🔨 3. Build and Others
+
+| Change               | Description                                                                 |
+| :------------------- | :-------------------------------------------------------------------------- |
+| Maven coordinates    | Artifacts are published under the group ID `com.amilego.gdx`, with versioning tracking upstream libGDX. |
+| CI and publishing    | The build-and-publish workflow is adjusted for the AmiLego organization. |
+| POM metadata         | SCM and developer metadata now point to `AmiLego/libgdx`. |
+
+## Licensing
+
+This fork respects the original license: [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Thank you libGDX contributors!
+
+<br>
+
+---
+
+> [!NOTE]
+> 
+> The content below is the raw README of the upstream repository libgdx/libgdx.
+
+---
+
+<br>
+
+![libGDX Logo](libgdx_logo.svg#gh-light-mode-only)
+![libGDX Logo](libgdx_logo_dark.svg#gh-dark-mode-only)
+
 [![GitHub Actions Build Status](https://img.shields.io/github/actions/workflow/status/libgdx/libgdx/build-publish.yml?branch=master&label=GitHub%20Actions)](https://github.com/libgdx/libgdx/actions?query=workflow%3A%22Build+and+Publish%22)
 
 [![Latest Version](https://img.shields.io/maven-central/v/com.badlogicgames.gdx/gdx?label=Version)](https://search.maven.org/artifact/com.badlogicgames.gdx/gdx)
