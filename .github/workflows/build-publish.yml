@@ -262,4 +262,4 @@ jobs:
         if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'AmiLego'
         run: |
           export GRADLE_OPTS="-Xmx8g"
-          ./gradlew build publish -PRELEASE -Psigning.gnupg.keyId=${{ secrets.MAVEN_CENTRAL_GPG_KEYID }} -Psigning.gnupg.passphrase=${{ secrets.MAVEN_CENTRAL_GPG_PASSPHRASE }} -Psigning.gnupg.keyName=${{ secrets.MAVEN_CENTRAL_GPG_KEYID }}
+          ./gradlew build publish -PRELEASE -Psigning.gnupg.keyName=${{ steps.import_gpg.outputs.fingerprint }} -Psigning.gnupg.passphrase=${{ secrets.MAVEN_CENTRAL_GPG_PASSPHRASE }}
