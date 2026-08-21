@@ -253,10 +253,10 @@ jobs:
       - name: Import GPG key
         if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'AmiLego'
         id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@1c6a9e9d3594f2d743f1b1dd7669ab0dfdffa922
+        uses: crazy-max/ghaction-import-gpg@v7
         with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          gpg-private-key: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
+          passphrase: ${{ secrets.MAVEN_CENTRAL_GPG_PASSPHRASE }}
 
       - name: Release build deploy
         if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'AmiLego'
