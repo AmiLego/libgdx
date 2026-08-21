@@ -255,11 +255,11 @@ jobs:
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v7
         with:
-          gpg-private-key: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
+          gpg_private_key: ${{ secrets.MAVEN_CENTRAL_GPG_KEY }}
           passphrase: ${{ secrets.MAVEN_CENTRAL_GPG_PASSPHRASE }}
 
       - name: Release build deploy
         if: (github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.release)) && github.repository_owner == 'AmiLego'
         run: |
           export GRADLE_OPTS="-Xmx8g"
-          ./gradlew build publish -PRELEASE -Psigning.gnupg.keyId=${{ secrets.GPG_KEYID }} -Psigning.gnupg.passphrase=${{ secrets.GPG_PASSPHRASE }} -Psigning.gnupg.keyName=${{ secrets.GPG_KEYID }}
+          ./gradlew build publish -PRELEASE -Psigning.gnupg.keyId=${{ secrets.MAVEN_CENTRAL_GPG_KEYID }} -Psigning.gnupg.passphrase=${{ secrets.MAVEN_CENTRAL_GPG_PASSPHRASE }} -Psigning.gnupg.keyName=${{ secrets.MAVEN_CENTRAL_GPG_KEYID }}
